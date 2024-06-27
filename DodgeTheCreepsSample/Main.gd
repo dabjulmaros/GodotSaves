@@ -2,6 +2,7 @@ extends Node
 
 @export var mob_scene: PackedScene
 var score
+var paused = false
 
 # Called when the node enters the scene tree for the first time.
 #func _ready():
@@ -9,8 +10,13 @@ var score
 #
 #
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-	#pass
+func _process(_delta):
+	if  Input.is_action_just_pressed("start_game") && !$MobTimer.is_stopped():
+		if(paused):
+			pause()
+		else:
+			resume()
+	pass
 
 
 func game_over():
@@ -69,3 +75,18 @@ func _on_start_timer_timeout():
 func _on_score_timer_timeout():
 	score+=1
 	$HUD.update_score(score)
+
+func pause():
+	paused = false
+	get_tree().call_group("gameEntity","pause")
+	$HUD/Message.text = "Pause!"
+	$HUD/Message.show()
+	$MobTimer.paused = true
+	$ScoreTimer.paused = true
+	
+func resume():
+	paused = true
+	get_tree().call_group("gameEntity","resume")
+	$HUD/Message.hide()
+	$MobTimer.paused = false
+	$ScoreTimer.paused = false

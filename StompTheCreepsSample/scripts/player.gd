@@ -73,10 +73,7 @@ func _physics_process(delta):
 				mob.squash()
 				target_velocity.y = bounce_impulse
 				# Prevent further duplicate calls.
-				print("squish")
 				break
-			else:
-				print("died")
 	
 	# moving the character 
 	velocity = target_velocity
@@ -86,8 +83,7 @@ func die():
 	hit.emit()
 	queue_free()
 
-#func _on_mob_detector_body_entered(body):
-	#print("died")
-	#die()
+func _on_mob_detector_body_entered(body):
+	die()
 
 

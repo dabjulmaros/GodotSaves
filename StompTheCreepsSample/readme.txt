@@ -1,5 +1,5 @@
 left at 
-https://docs.godotengine.org/en/stable/getting_started/first_3d_game/07.killing_player.html
+https://docs.godotengine.org/en/stable/getting_started/first_3d_game/08.score_and_replay.html
 
 issues:
 	monster spawnning too low, and making it so the player always bounces off

@@ -29,6 +29,8 @@ mob_scene = ExtResource("2_kpw42")
 
 [node name="Ground" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+collision_layer = 4
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
 shape = SubResource("BoxShape3D_jgyly")
@@ -41,7 +43,7 @@ transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 13, 0)
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_455b2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.697288, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.480829, 0)
 
 [node name="CameraPivot" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
@@ -56,22 +58,23 @@ far = 100.0
 [node name="Cylinders" type="Node3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Cylinders"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.1065, 0, -15.4589)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.1065, 0.946238, -15.4589)
 mesh = SubResource("CylinderMesh_edp48")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Cylinders"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7704, 0, -16.4671)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7704, 0.946238, -16.4671)
 mesh = SubResource("CylinderMesh_edp48")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Cylinders"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.1065, 0, 19.4917)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.1065, 0.946238, 19.4917)
 mesh = SubResource("CylinderMesh_edp48")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="Cylinders"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7704, 0, 18.4835)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7704, 0.946238, 18.4835)
 mesh = SubResource("CylinderMesh_edp48")
 
 [node name="SpawnPath" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.80905, 0)
 curve = SubResource("Curve3D_twypy")
 
 [node name="SpawnLocation" type="PathFollow3D" parent="SpawnPath"]

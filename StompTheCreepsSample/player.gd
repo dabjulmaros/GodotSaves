@@ -3,6 +3,13 @@ extends CharacterBody3D
 #how fast the player moves in meters per second
 @export var speed = 14
 
+# Vertical impulse applied to the character upon jumpin in meters per second.
+@export var jump_impulse = 20
+
+# Vertical impulse applied to the character upun bouncing over a mob
+# in meters per second.
+@export var bounce_impulse = 16
+
 # the downward acceleration when in the air, in meters per second square
 @export var fall_acceleration = 75
 
@@ -35,6 +42,37 @@ func _physics_process(delta):
 	# Vertical Velocity
 	if not is_on_floor(): # if in the air, fall  towards floor. Literally gravity
 		target_velocity.y = target_velocity.y - (fall_acceleration*delta)
+	
+	# Jumping
+	if is_on_floor() and Input.is_action_just_pressed("jump"):
+		target_velocity.y = jump_impulse
+	
+	# iterate through all the collisions that occurred this frame
+	for index in range(get_slide_collision_count()):
+		# We get one of the collisions with the player
+		var collision = get_slide_collision(index)
+		
+		#if the collision is with the ground
+		if collision.get_collider()==null:
+			continue
+		
+		# If the collision is with a mob
+		if collision.get_collider().is_in_group("mob"):
+			var mob = collision.get_collider()
+			
+			# We check that we are hitting it from above
+			# the tutorial calls for 0.1 but the monsters seem to be spawning too low
+			# or almost inside the ground, by making the normal over .2 seems to fix it
+			# a permanent solution would fix the monster spawn
+			if Vector3.UP.dot(collision.get_normal())>0.3:
+				# If so we squash and bounce
+				mob.squash()
+				target_velocity.y = bounce_impulse
+				# Prevent further duplicate calls.
+				print("squish")
+				break
+			else:
+				print("died")
 	
 	# moving the character 
 	velocity = target_velocity

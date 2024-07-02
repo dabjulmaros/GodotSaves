@@ -1,7 +1,9 @@
+res://mob.tscn
 res://main.tscn
 res://player.tscn
-res://mob.tscn
 res://mob.gd
-res://main.gd
+res://scenes/main.tscn
+res://scripts/player.gd
+res://scenes/player.tscn
+res://scenes/mob.tscn
 res://readme.txt
-res://player.gd

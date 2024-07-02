@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://c710b35mmt0cb"]
 
-[ext_resource type="PackedScene" uid="uid://csx2b64k4lwit" path="res://player.tscn" id="1_455b2"]
-[ext_resource type="Script" path="res://main.gd" id="1_sfnxi"]
-[ext_resource type="PackedScene" uid="uid://bwewggju1lggs" path="res://mob.tscn" id="2_kpw42"]
+[ext_resource type="PackedScene" uid="uid://csx2b64k4lwit" path="res://scenes/player.tscn" id="1_455b2"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_sfnxi"]
+[ext_resource type="PackedScene" uid="uid://bwewggju1lggs" path="res://scenes/mob.tscn" id="2_kpw42"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jgyly"]
 size = Vector3(60, 2, 60)

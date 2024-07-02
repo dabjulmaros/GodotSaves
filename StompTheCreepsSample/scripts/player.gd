@@ -1,5 +1,8 @@
 extends CharacterBody3D
 
+# Emitted signal when the players was hit by a mob
+signal hit
+
 #how fast the player moves in meters per second
 @export var speed = 14
 
@@ -61,10 +64,11 @@ func _physics_process(delta):
 			var mob = collision.get_collider()
 			
 			# We check that we are hitting it from above
+			#FIXED
 			# the tutorial calls for 0.1 but the monsters seem to be spawning too low
 			# or almost inside the ground, by making the normal over .2 seems to fix it
 			# a permanent solution would fix the monster spawn
-			if Vector3.UP.dot(collision.get_normal())>0.3:
+			if Vector3.UP.dot(collision.get_normal())>0.1:
 				# If so we squash and bounce
 				mob.squash()
 				target_velocity.y = bounce_impulse
@@ -77,3 +81,13 @@ func _physics_process(delta):
 	# moving the character 
 	velocity = target_velocity
 	move_and_slide()
+
+func die():
+	hit.emit()
+	queue_free()
+
+#func _on_mob_detector_body_entered(body):
+	#print("died")
+	#die()
+
+

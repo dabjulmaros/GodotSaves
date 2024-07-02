@@ -4,3 +4,5 @@ https://docs.godotengine.org/en/stable/getting_started/first_3d_game/07.killing_
 issues:
 	monster spawnning too low, and making it so the player always bounces off
 	(see player.gd line 64)
+	FIXED: the mob scene was modified so that the node center was at the bottom of the character
+		and hit boxes

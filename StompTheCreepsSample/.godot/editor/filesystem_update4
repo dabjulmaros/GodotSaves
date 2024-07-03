@@ -10,3 +10,4 @@ res://readme.txt
 res://scripts/main.gd
 res://scripts/ScoreLabel.gd
 res://scenes/music_player.tscn
+res://scripts/mob.gd

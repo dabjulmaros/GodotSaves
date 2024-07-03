@@ -28,6 +28,9 @@ func initialize(start_position, player_position):
 	# then rotate the velocity vector based on the mobs y roation
 	# in order to move in the direction its look
 	velocity = velocity.rotated(Vector3.UP, rotation.y)
+	
+	# set the animation speed
+	$AnimationPlayer.speed_scale = random_speed / min_speed
 
 
 func _on_visibility_notifier_screen_exited():

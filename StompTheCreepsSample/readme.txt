@@ -9,3 +9,8 @@ issues:
 	(see player.gd line 64)
 	FIXED: the mob scene was modified so that the node center was at the bottom of the character
 		and hit boxes
+		
+todo: 
+	add combo - Done
+	make the enviroment look good?
+

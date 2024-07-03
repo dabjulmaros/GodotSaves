@@ -3,6 +3,8 @@ extends CharacterBody3D
 # Emitted signal when the players was hit by a mob
 signal hit
 
+signal touchedTheGround
+
 #how fast the player moves in meters per second
 @export var speed = 14
 
@@ -51,8 +53,10 @@ func _physics_process(delta):
 		target_velocity.y = target_velocity.y - (fall_acceleration*delta)
 	
 	# Jumping
-	if is_on_floor() and Input.is_action_just_pressed("jump"):
-		target_velocity.y = jump_impulse
+	if is_on_floor():
+		touchedTheGround.emit()
+		if Input.is_action_just_pressed("jump"):
+			target_velocity.y = jump_impulse
 	
 	# iterate through all the collisions that occurred this frame
 	for index in range(get_slide_collision_count()):

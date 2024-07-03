@@ -11,3 +11,7 @@ res://scripts/main.gd
 res://scripts/ScoreLabel.gd
 res://scenes/music_player.tscn
 res://scripts/mob.gd
+res://art/Shaders/water_shader.tres
+res://MeshInstance3D.gd
+res://art/Shaders/node.tscn
+res://scenes/MeshInstance3D.gd

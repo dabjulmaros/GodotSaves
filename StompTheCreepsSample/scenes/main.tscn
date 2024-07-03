@@ -1,16 +1,33 @@
-[gd_scene load_steps=12 format=3 uid="uid://c710b35mmt0cb"]
+[gd_scene load_steps=14 format=3 uid="uid://c710b35mmt0cb"]
 
 [ext_resource type="PackedScene" uid="uid://csx2b64k4lwit" path="res://scenes/player.tscn" id="1_455b2"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_sfnxi"]
 [ext_resource type="PackedScene" uid="uid://bwewggju1lggs" path="res://scenes/mob.tscn" id="2_kpw42"]
+[ext_resource type="Shader" uid="uid://stnrv2s5i6tk" path="res://art/Shaders/water_shader.tres" id="3_sbb78"]
 [ext_resource type="FontFile" uid="uid://bgyew64uimsm8" path="res://fonts/Montserrat-Medium.ttf" id="4_lb30m"]
 [ext_resource type="Script" path="res://scripts/ScoreLabel.gd" id="5_nfnbm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jgyly"]
 size = Vector3(60, 2, 60)
 
-[sub_resource type="BoxMesh" id="BoxMesh_irwv2"]
-size = Vector3(60, 2, 60)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5deel"]
+render_priority = 0
+shader = ExtResource("3_sbb78")
+shader_parameter/WATER_COL = Color(0.04, 0.38, 0.88, 1)
+shader_parameter/WATER2_COL = Color(0.04, 0.35, 0.78, 1)
+shader_parameter/FOAM_COL = Color(0.8125, 0.9609, 0.9648, 1)
+shader_parameter/distortion_speed = 2.0
+shader_parameter/tile = Vector2(10, 10)
+shader_parameter/height = 5.0
+shader_parameter/wave_size = Vector2(5, 5)
+shader_parameter/wave_speed = 1.5
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_7bwqh"]
+lightmap_size_hint = Vector2i(152, 152)
+material = SubResource("ShaderMaterial_5deel")
+size = Vector2(80, 80)
+subdivide_width = 30
+subdivide_depth = 30
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_db20s"]
 albedo_color = Color(1, 0.00784314, 0, 1)
@@ -213,7 +230,8 @@ collision_mask = 0
 shape = SubResource("BoxShape3D_jgyly")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
-mesh = SubResource("BoxMesh_irwv2")
+gi_mode = 0
+mesh = SubResource("PlaneMesh_7bwqh")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 13, 0)
